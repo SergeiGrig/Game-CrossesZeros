@@ -31,15 +31,16 @@ print()
 
 def show_field(turns) -> None:
     # функция вывода псевдографического изображения игрового поля со сделанными ходами
-    for el in turns:
-        pass
-
-    board = range(1,10)
-    print('-------------')
-    for i in range(3):
-        print('|', board[0+i*3], '|', board[1+i*3], '|', board[2+i*3], '|')
-        print('-------------')
-    for el in turns:
-        print(turns[el])
-    # print()
+    for key,value in turns.items():
+        print(f'{key=} {value=}')
+        for key,valueN in value.items():
+            board = range(1,10)
+            tuple(valueN[board[0]])
+            print('-------------')
+            for i in range(3):
+                print('|', board[0+i*3], '|', board[1+i*3], '|', board[2+i*3], '|')
+                print('-------------')
+            # for els in turns:
+            #     print(turns[els])
+        # print()
 show_field(saves)
