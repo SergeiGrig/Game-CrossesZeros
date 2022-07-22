@@ -27,3 +27,8 @@ for into in players.values():
                      'fails': scores[2]}
 pprint(players)
 print()
+
+
+def show_field(turns) -> None:
+# функция вывода псевдографического изображения игрового поля со сделанными ходами
+    print()
