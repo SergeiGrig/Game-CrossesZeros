@@ -1,5 +1,29 @@
-# FIXME: документируйте модуль
-""""""
+from configparser import ConfigParser as CP
+from pprint import pprint
 
-# Проверка сохранения изменения
-## проверено — работает
+ini1 = 'saves.ini'
+ini2 = 'players.ini'
+
+config = CP()
+config.read(ini1)
+
+saves = {}
+for players in config.sections():
+    game = frozenset(players.split(','))
+    saves[game] = dict(config[players])
+pprint(saves)
+print()
+
+config.clear()
+config.read(ini2)
+
+players = {}
+for player in config.sections():
+    players[player] = dict(config[player])
+for into in players.values():
+    scores = into['stats'].split(',')
+    into['stats'] = {'wins': scores[0],
+                     'ties': scores[1],
+                     'fails': scores[2]}
+pprint(players)
+print()
