@@ -41,9 +41,14 @@ print()
 def show_field(turns) -> None:
     """функция вывода псевдографического изображения игрового поля со сделанными ходами"""
     # 🡹 строка документации оформляется не комментарием, а в виде строкового литерала, заключённого в утроенные двойные кавычки
-    for key,value in turns.items():
-        print(f'{key=} {value=}')
+    for key, value in turns.items():
+        print(f'Игра: {sorted(tuple(key))}')
+        print(f'Ходы: {dict((k,v) for k,v in value.items())}')
+        a = turns[frozenset({'player1', 'player2'})]['x']
+        print(a)
+
         for key, valueN in value.items():
+            # FIXME: почему здесь внезапно появляется плоский range?
             board = range(1,10)
             tuple(valueN[board[0]])
             print('-------------')
@@ -53,5 +58,4 @@ def show_field(turns) -> None:
             # for els in turns:
             #     print(turns[els])
         # print()
-
 show_field(saves)
