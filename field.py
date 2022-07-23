@@ -42,7 +42,7 @@ def show_field(turns) -> None:
             a = value
             print(a)
 
-        for key,valueN in value.items():
+        for key,valueN in d.items():
             board = range(1,10)
             tuple(valueN[board[0]])
             print('-------------')
