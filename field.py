@@ -47,7 +47,7 @@ def show_field(turns) -> None:
         del d['x']
         print(f'Игрок {dx} ставит "Х" ')
         print(f'Ходы: {d}')
-        d_field = {1:"", 2:"", 3:"", 4:"", 5:"", 6:"", 7:"", 8:"", 9:""}
+        d_field = {1:" ", 2:" ", 3:" ", 4:" ", 5:" ", 6:" ", 7:" ", 8:" ", 9:" "}
         # Каждому ходу подставляем соответствующие "Х" и "0"
         for k,v in d.items():
             if k == dx:
@@ -61,12 +61,11 @@ def show_field(turns) -> None:
 
         # FIXME: почему здесь внезапно появляется плоский range?
         # range для заполнения полей 1-9
-        for key,valueN in d.items():
-            board = range(1,10)
-            tuple(valueN[board[0]])
+        board = range(1,10)
+        print('-------------')
+        for i in range(3):
+            print('|', d_field[board[0+i*3]], '|', d_field[board[1+i*3]], '|', d_field[board[2+i*3]], '|')
             print('-------------')
-            for i in range(3):
-                print('|', d_field[board[0+i*3]], '|', d_field[board[1+i*3]], '|', d_field[board[2+i*3]], '|')
-                print('-------------')
+        print()
 
 show_field(saves)
