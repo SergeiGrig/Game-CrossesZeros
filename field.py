@@ -33,9 +33,9 @@ def show_field(turns) -> None:
     # функция вывода псевдографического изображения игрового поля со сделанными ходами
     for key,value in turns.items():
         print(f'Игра: {sorted(tuple(key))}')
-        # d = dict((k,v) for k,v in value.items())
-        # d.pop('x')
-        print(f'Ходы: {dict((k,v) for k,v in value.items())}')
+        del (d := dict((k,v) for k,v in value.items()))['x']
+        # del d['x']
+        print(f'Ходы: {d}')
         # a = turns[frozenset({'player1', 'player2'})]['x']
         # a = key['x']
         if turns[key] == 'x':
