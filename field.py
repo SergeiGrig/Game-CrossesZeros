@@ -18,6 +18,7 @@ for players in config.sections():
     game = frozenset(players.split(','))
     saves[game] = dict(config[players])
 # FIXME: отсутствует интерпретация полей с данными о ходах
+print('Из файла saves.ini:')
 pprint(saves)
 print()
 
@@ -33,6 +34,7 @@ for into in players.values():
     into['stats'] = {'wins': scores[0],
                      'ties': scores[1],
                      'fails': scores[2]}
+print('Из файла players.ini:')
 pprint(players)
 print()
 
@@ -68,4 +70,24 @@ def show_field(turns) -> None:
             print('-------------')
         print()
 
+
 show_field(saves)
+
+
+def check_win(turns) -> None:
+    """Логическое значение, есть ли на поле победная комбинация"""
+    for key, value in turns.items():
+        print(f'Игра: {sorted(tuple(key))}')
+        d = dict((k, frozenset(v.replace(',',''))) for k, v in value.items() if k !='x')
+        print(d)
+        for p,f in d.items():
+            if f in ({'1','2','3'}, {'4','5','6'}, {'7','8','9'}, {'1','4','7'}, {'2','5','8'}, {'3','6','9'}, {'1','5','9'}, {'3','5','7'}, {'8','2','3'}):
+                print(f'{True})) Победил {p} !!!')
+                print()
+                break
+        else:
+            print(f'{False} Нет победной комбинации')
+
+
+check_win(saves)
+
