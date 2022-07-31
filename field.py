@@ -95,18 +95,20 @@ def check_win(turns) -> None:
         players_turns = dict((k, frozenset(v.replace(',','')))
                              for k, v in field.items() if k != 'x')
         print(players_turns)
-        for player, f in players_turns.items():
-            w = ({'1','2','3'}, {'4','5','6'}, {'7','8','9'}, {'1','4','7'},
-                     {'2','5','8'}, {'3','6','9'}, {'1','5','9'}, {'3','5','7'})
-            flag = False
-            for w_el in w:
-                if w_el - f == set():
+        for player, made_turns in players_turns.items():
+            win_fields = ({'1','2','3'}, {'4','5','6'}, {'7','8','9'}, {'1','4','7'},
+                          {'2','5','8'}, {'3','6','9'}, {'1','5','9'}, {'3','5','7'})
+            win = False
+            for comb in win_fields:
+                if comb - made_turns == set():
+                    # ИСПРАВИТЬ: это был тестовый вывод - теперь можно его убирать: всё равно о победе заявлять рано
                     print(f'{True} Победил {player} !!!\n')
-                    flag = True
+                    win = True
                     break
-            if flag:
+            if win:
                 break
         else:
+            # ИСПРАВИТЬ: это был тестовый вывод - теперь можно его убирать: всё равно о победе заявлять рано
             print(f'{False} Нет победной комбинации ...\n')
 
 # ОТВЕТИТЬ: опишите сценарий, в котором потребуется одним вызовом функции проверить на победные комбинации все СОХРАНЁННЫЕ партии
